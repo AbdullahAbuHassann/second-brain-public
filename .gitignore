@@ -1,0 +1,14 @@
+# Logs produced by the optional sync.sh
+.claude/sync.log
+.claude/sync.log.tmp
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# User's local settings (if they want to keep them private)
+.claude/settings.local.json

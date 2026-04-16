@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# OPTIONAL: Auto-sync the knowledge base with GitHub.
+#
+# This is not a Claude Code hook — it's a standalone script meant to be run
+# on a schedule (cron, launchd, GitHub Actions, etc.). It commits any local
+# changes, pulls remote, rebases, then pushes.
+#
+# To enable:
+#   1. Rename this file to sync.sh and make it executable:
+#        mv sync.sh.example sync.sh && chmod +x sync.sh
+#   2. Set REPO_DIR below to the absolute path of your knowledge base.
+#   3. Schedule it. Example macOS cron (every 5 min):
+#        crontab -e
+#        */5 * * * * /absolute/path/to/.claude/hooks/sync.sh
+#   4. Make sure your git remote is set and you're authenticated (gh auth
+#      login or a credential helper).
+
+REPO_DIR="/absolute/path/to/your/knowledge-base"   # <-- EDIT THIS
+LOG_FILE="$REPO_DIR/.claude/sync.log"
+
+cd "$REPO_DIR" || exit 1
+
+echo "$(date '+%Y-%m-%d %H:%M:%S') - Sync started" >> "$LOG_FILE"
+
+# Commit any local changes first so pull --rebase works.
+if [ -n "$(git status --porcelain)" ]; then
+    git add -A >> "$LOG_FILE" 2>&1
+    git commit -m "auto-sync: $(date '+%Y-%m-%d %H:%M')" >> "$LOG_FILE" 2>&1
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - Local changes committed" >> "$LOG_FILE"
+fi
+
+git pull --rebase origin main >> "$LOG_FILE" 2>&1
+git push origin main >> "$LOG_FILE" 2>&1
+echo "$(date '+%Y-%m-%d %H:%M:%S') - Sync complete" >> "$LOG_FILE"
+
+# Trim log so it doesn't grow unbounded.
+tail -200 "$LOG_FILE" > "$LOG_FILE.tmp" && mv "$LOG_FILE.tmp" "$LOG_FILE"
