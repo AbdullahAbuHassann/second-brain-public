@@ -30,7 +30,7 @@ what to personalize first.
 ## How to use it
 
 - **Add a note:** drag any file (journal, goals doc, article, transcript) into the `knowledge-base/raw/` folder.
-- **Tell Claude about it:** *"Ingest `raw/filename.md`"* — Claude reads it and updates your wiki.
+- **Tell Claude about it in plain English:** *"Save this to my knowledge base"*, *"Add my new journal to the brain"*, *"I just dropped a new file in raw — process it."* Claude reads the file and updates your wiki.
 - **Ask anything about yourself:** *"What are my goals for this year?"*, *"What have I learned about discipline?"*, *"Summarize my thinking on X."*
 - **Ask for writing in your voice:** *"Draft a tweet about Y"*, *"Write a short essay on Z."*
 

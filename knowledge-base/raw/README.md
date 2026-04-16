@@ -22,7 +22,7 @@ This folder is your source of truth. Drop any of the following here:
 ## Workflow
 
 1. Drop a file here.
-2. Tell Claude: *"Ingest `raw/the-file-name.md`"*.
+2. Tell Claude in plain English: *"Save this to my knowledge base"*, *"Add my new journal"*, *"I just dropped a file in raw — process it."* Any phrasing works.
 3. Claude follows the process in [SCHEMA.md](../SCHEMA.md#ingestion-process): reads the file, checks `wiki/index.md` for existing pages, creates or updates wiki pages, adds backlinks, updates the index, and appends to `wiki/log.md`.
 
 This stays manual on purpose — you decide what's worth ingesting and when.
