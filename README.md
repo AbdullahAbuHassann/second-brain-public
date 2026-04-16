@@ -18,6 +18,15 @@ what to personalize first.
 
 6. Claude will set everything up and tell you what to personalize. Follow its instructions.
 
+> **What you'll see appear inside your folder:**
+> - `knowledge-base/` — the main folder for your brain. Inside it:
+>   - `raw/` — **this is where you drop your notes, journals, articles.**
+>   - `wiki/` — Claude's organized version of your notes (leave it alone, Claude manages it).
+>   - `briefings/`, `content/`, `platforms/` — optional, for drafts and outputs.
+> - `skills/` — extra tools, like one for pulling YouTube transcripts.
+> - `CLAUDE.md` — instructions that tell Claude how to work with your brain.
+> - `.claude/` — behind-the-scenes settings (hidden by default; ignore it).
+
 ## How to use it
 
 - **Add a note:** drag any file (journal, goals doc, article, transcript) into the `knowledge-base/raw/` folder.
