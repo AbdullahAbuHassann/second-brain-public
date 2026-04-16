@@ -1,56 +1,28 @@
-# Second Brain Template
+# Second Brain
 
-A personal knowledge-base framework for Claude Code. You drop notes, journals, articles, and transcripts into `raw/`. Claude reads them, builds a cross-linked wiki of entities, themes, lessons, and decisions, and uses that wiki to answer questions about you — never guessing, always grounded in your own material.
+Your personal knowledge base, powered by Claude. Drop in your journals, notes, articles, and transcripts — Claude reads them, organizes them into a wiki, and uses that wiki to answer questions about you.
 
-## What you get
+## Setup (takes 2 minutes)
 
-- **`knowledge-base/raw/`** — the source-of-truth folder. You add content here. A pre-tool-use hook blocks Claude from ever modifying it.
-- **`knowledge-base/wiki/`** — Claude-maintained pages with `[[backlinks]]`, an index, and an append-only log. Governed by `SCHEMA.md`.
-- **`CLAUDE.md`** — routes Claude to the right file for the right job: wiki for questions about you, teaching style for explanations, tone guide for content generation.
-- **`.claude/hooks/protect-raw.sh`** — the single piece of automation. Blocks Edit/Write on `raw/`. Everything else is deliberately manual.
-- **`skills/youtube-full`** — optional skill for ingesting YouTube transcripts.
-
-## Install
-
-Open a terminal in the directory where you want your knowledge base. Launch Claude Code. Paste this:
+1. Open a terminal in any empty folder where you want your knowledge base to live.
+2. Start Claude Code (`claude` in the terminal).
+3. Paste this prompt:
 
 ```
 Clone https://github.com/AbdullahAbuHassann/second-brain-public into this project.
-Follow the installer spec in AGENTS.md to set up CLAUDE.md, the knowledge-base
-scaffold, the protect-raw hook, and the youtube-full skill. Confirm the hook
-works by running the verification tests. After install, tell me what to
-personalize first.
+Follow the installer spec in AGENTS.md to set it up. After install, tell me
+what to personalize first.
 ```
 
-> Claude will read `AGENTS.md`, handle conflicts with any existing files, make the hooks executable, run verification, and print next steps.
+4. Follow Claude's instructions to fill in three files with your personal info. That's it.
 
-## What's automated vs manual
+## How to use it
 
-| Action                          | Automated? | Why                                                                 |
-| ------------------------------- | ---------- | ------------------------------------------------------------------- |
-| Blocking writes to `raw/`       | Yes        | Defensive — protects source of truth, nobody wants this manual      |
-| Ingesting `raw/` into `wiki/`   | No         | You choose what's worth ingesting and when                          |
-| Updating `wiki/index.md`        | No         | Happens as part of ingestion, which is manual                       |
-| Creating wiki pages             | No         | Driven by ingestion or explicit request                             |
-| Wiki health-check / lint        | No         | Run when you feel the wiki's getting messy                          |
-| GitHub sync                     | Opt-in     | Shipped as `sync.sh.example` — enable if you want cross-device sync |
+- **Add a note:** drop any file (journal, goals, article, transcript) into `knowledge-base/raw/`.
+- **Tell Claude:** *"Ingest `raw/filename.md`"* — Claude reads it and updates your wiki.
+- **Ask anything about yourself:** *"What are my goals for this year?"*, *"What have I learned about discipline?"*, *"Summarize my thinking on X."* — Claude answers from your wiki.
+- **Ask for content in your voice:** *"Draft a tweet about Y"*, *"Write a short essay on Z"* — Claude matches the tone you set up.
 
-## Personalize after install
+## What makes this different
 
-Three files need your touch before this feels like your knowledge base:
-
-1. **`knowledge-base/SCHEMA.md`** — fill in the *Context About Me* section.
-2. **`knowledge-base/TEACHING-STYLE.md`** — keep the default or rewrite.
-3. **`knowledge-base/TONE.md`** — rewrite with your own voice. The template shows the shape, not the content.
-
-## Using it day-to-day
-
-- **Drop a file:** put it in `knowledge-base/raw/` with a descriptive filename.
-- **Ingest:** ask Claude *"Ingest `raw/filename.md`"*. It reads, updates the wiki, logs the action.
-- **Ask questions:** ask anything about yourself — Claude reads `wiki/index.md` first, then follows backlinks.
-- **Generate content:** ask for a draft — Claude matches `TONE.md`.
-- **Lint:** ask *"Health-check the wiki"* to find contradictions, orphans, missing pages.
-
-## Credits
-
-Inspired by the "paste a prompt, Claude installs it" pattern popularized by projects like [coleam00/claude-memory-compiler](https://github.com/coleam00/claude-memory-compiler).
+Claude never guesses about you. Every answer is grounded in notes you wrote. The more you add to `raw/`, the smarter it gets about you.
