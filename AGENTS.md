@@ -40,6 +40,7 @@ Copy the following from this repo into the user's CWD, preserving the directory 
 | `.claude/settings.json`                       | `.claude/settings.json`                       | Registers the protect-raw hook             |
 | `.claude/hooks/protect-raw.sh`                | `.claude/hooks/protect-raw.sh`                | Blocks Edit/Write on `knowledge-base/raw/` |
 | `.claude/hooks/sync.sh.example`               | `.claude/hooks/sync.sh.example`               | Optional GitHub auto-sync template         |
+| `skills/knowledge-base/SKILL.md`              | `skills/knowledge-base/SKILL.md`              | The core ingestion + Q&A skill             |
 | `skills/youtube-full/SKILL.md`                | `skills/youtube-full/SKILL.md`                | YouTube transcript/search skill            |
 | `skills/youtube-full/scripts/tapi-auth.js`    | `skills/youtube-full/scripts/tapi-auth.js`    | Skill auth helper                          |
 
@@ -107,6 +108,8 @@ Print this to the user after verification passes:
 > 4. **(Optional) Auto-sync to GitHub.** Rename `.claude/hooks/sync.sh.example` to `sync.sh`, edit the `REPO_DIR` path, and add it to cron. Instructions are inside the file.
 >
 > 5. **(Optional) Activate the YouTube skill.** If you want to ingest YouTube transcripts, use the `/youtube-full` skill — it'll walk you through getting a free API key on first use.
+>
+> 6. **(Optional) Set up Apify for X / TikTok / Instagram.** The `knowledge-base` skill uses Apify to fetch content from platforms that block normal web fetching. Without Apify, web articles and YouTube still work. Setup instructions are in the README.
 
 ## 8. How the system works (technical reference)
 
