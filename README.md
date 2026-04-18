@@ -27,13 +27,14 @@ Claude will download everything and tell you which files to fill in with your in
 7. **Tell Claude to build your wiki.** Paste this into Claude:
 
 ```
-Process everything in my raw folder. Read every file, build out the wiki
-by creating pages for each entity, theme, lesson, and decision you find,
-and link them together with backlinks. Follow knowledge-base/SCHEMA.md.
-Update wiki/index.md and wiki/log.md as you go.
+Process my raw folder one file at a time, following knowledge-base/SCHEMA.md.
+For each file: read it fully, build the wiki (entities, themes, lessons,
+decisions, with [[backlinks]]), update wiki/index.md, append to wiki/log.md,
+then tell me what you did and wait for me to say "continue" before moving
+to the next file.
 ```
 
-Claude will read every file and build the `wiki/` folder. Open Obsidian — you'll see pages appear, linked to each other. Click any `[[link]]` to jump between them.
+Claude will ingest the first file and show you the pages it created. Say *"continue"* (or *"next"*) to move to the next file. One at a time is deliberate — batch-ingesting a whole folder at once makes Claude skim and miss cross-file patterns. Open Obsidian between steps to watch the wiki grow and click any `[[link]]` to jump between pages.
 
 ## What you'll see inside your vault
 

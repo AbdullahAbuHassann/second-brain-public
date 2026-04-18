@@ -76,7 +76,10 @@ Links to other wiki pages: [[Related Page 1]], [[Related Page 2]]
 - List which pages were created or updated
 
 ## Ingestion Process
-When the user tells you to process a new raw file:
+
+**Always process one file at a time, even when many are pending.** If the user dumps a batch into `raw/` and asks you to ingest them all, do not read everything in one pass. Process one file fully through all the steps below, report what you did, then stop and wait for the user to say "next" or "continue" before moving to the next file. Why: detecting patterns across entries and maintaining backlinks degrades in quality when the model is juggling 10+ files in context. One at a time keeps each ingestion deliberate.
+
+When the user tells you to process a new raw file (or the next file in a batch):
 
 1. Read the full file
 2. Read `wiki/index.md` to understand what already exists
@@ -87,7 +90,7 @@ When the user tells you to process a new raw file:
 5. Add backlinks between new and existing pages
 6. Update `wiki/index.md` with any new pages
 7. Append to `wiki/log.md` what you did
-8. Tell the user: what pages you created, what pages you updated, and any interesting connections you noticed
+8. Tell the user: what pages you created, what pages you updated, and any interesting connections you noticed. If there are more unprocessed files in `raw/`, stop and wait for the user to say "next" or "continue".
 
 ## What To Prioritize
 - Lessons and patterns that repeat across multiple entries — these are the most valuable

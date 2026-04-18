@@ -124,7 +124,7 @@ When the user says "ingest `raw/X.md`", follow the Ingestion Process section in 
 4. Cross-link with `[[backlinks]]`.
 5. Update `wiki/index.md` and append to `wiki/log.md`.
 
-Ingestion is always user-initiated. Do not auto-ingest on file drop.
+Ingestion is always user-initiated. Do not auto-ingest on file drop. **Process one file per ingest** — if the user asks to process a whole batch, loop one-by-one and pause for confirmation between files. See `SCHEMA.md` for the full rule and rationale.
 
 ### The protect-raw hook
 `.claude/hooks/protect-raw.sh` is a PreToolUse hook matched to `Edit|Write|MultiEdit`. It reads the tool call from stdin as JSON, extracts `tool_input.file_path`, and exits with code 2 (which Claude Code treats as a blocking denial) if the path is under `knowledge-base/raw/`.
