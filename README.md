@@ -60,6 +60,14 @@ Claude will ingest the first file and show you the pages it created. Say *"conti
 2. In the Claude desktop app: profile → **Settings** → **Connectors** → **Browse** → search for **Apify** and connect.
 3. Done. Next time you send a tweet or TikTok to Claude, it'll use Apify automatically.
 
+For X sources, the knowledge-base skill routes post and thread requests to
+[Xquik X Tweet Scraper](https://apify.com/xquik/x-tweet-scraper). It routes
+explicit audience and relation snapshots to
+[Xquik X Follower Scraper](https://apify.com/xquik/x-follower-scraper).
+It fetches the live schema, sets result caps, and asks before a paid run.
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
+
 ## What makes this different
 
 Claude never guesses about you. Every answer is grounded in content you actually saved. The more you add, the smarter it gets — and the more it starts surfacing patterns, contradictions, and connections you'd never spot yourself.
